@@ -1,86 +1,84 @@
-# OMDB Movie Search Project
+# OMDb Movie Finder
 
-## How to Set Up Your Repository
+A responsive single page application that searches the OMDb API and displays movie details without reloading the page.
 
-**WARNING**: This is a template project. Do not fork this repository.
+## Live Demo
 
-Please follow the visual steps below to create and set up the project repository on your own GitHub profile.
+After enabling GitHub Pages, the project will be available at:
 
-1. Click the **"Use this template"** button at the top right of this page.
+```text
+https://your-username.github.io/omdb-project/
+```
 
-<img width="1920" height="1080" alt="Use this template example" src="https://github.com/user-attachments/assets/137c0f6c-bc6c-4584-8752-02c067051438" />
-<br><br>
+## Features
 
-2. Select **"Create a new repository"** to generate your own public repository for this task.
+- Search OMDb by movie, series, or episode title
+- Optional filters for type and release year
+- Responsive layout for desktop, tablet, and mobile screens
+- Movie detail view with title, year, genre, director, poster, plot, actors, awards, and ratings
+- Clear error handling for missing API keys, failed API requests, and empty results
+- Multiple searches without page refresh
+- Last search and selected movie are restored with `localStorage` and URL parameters
+- Lightweight HTML, CSS, and JavaScript implementation
 
-<img width="1920" height="1080" alt="Create a new repository" src="https://github.com/user-attachments/assets/87b9032e-6e10-4679-88bb-c42a98894edf" />
-<br><br>
+## Technologies
 
-3. Name your repository as **"omdb-project"** and click the **"Create repository"** button.
+- HTML5
+- CSS3
+- JavaScript
+- OMDb API
+- GitHub Pages
 
-<img width="1920" height="1080" alt="Create repository" src="https://github.com/user-attachments/assets/dd808d69-6ade-4903-8f77-831b643dbdff" />
-<br><br>
+## Getting an OMDb API Key
 
-Upload all of your solutions to `github.com/yourusername/omdb-project`.
+1. Go to [omdbapi.com/apikey.aspx](https://www.omdbapi.com/apikey.aspx).
+2. Request a free API key.
+3. Open the app and expand **API key settings**.
+4. Paste the key and click **Save key**.
 
----
+The API key is stored only in the browser's `localStorage`. It is not committed to this repository.
 
-## Overview
+## Running Locally
 
-This project is designed to evaluate your coding skills in web development. You are required to build a simple web application that consumes the [OMDB API](http://www.omdbapi.com/).
+Because this is a static project, you can open `index.html` directly in a browser.
 
-* The application must be a fully responsive **Single Page Application (SPA)** and should display movie details such as **title, year, genre, director, and poster**.
-* The application must be written using **HTML, CSS, and JavaScript**.
-* If your project meets all the requirements, you may extend it with additional functionalities.
-* After development, you must deploy the project using [GitHub Pages](https://pages.github.com). **Projects that are not deployed to GitHub Pages will not be evaluated and will receive 0 points.**
+For a local server, run:
 
-You must **create your own repository using this template** and upload your work there. 
-Do **not** attempt to push changes directly to this repository or any of its original branches.
+```bash
+python -m http.server 5500
+```
 
----
+Then open:
 
-## Functional Requirements
+```text
+http://localhost:5500
+```
 
-1. **Movie Search Input**
-   - Users must be able to enter a movie name and trigger a search.
-   - A search box and button are sufficient, but adding well-composed UI elements (e.g., filters similar to sahibinden.com) will earn bonus points.
+## Deployment with GitHub Pages
 
-2. **Display Movie Details**
-   - Show at least: Title, Year, Genre, Director, and Poster image.
-   - The design is up to you.
+1. Create a public repository from the assignment template and name it `omdb-project`.
+2. Upload `index.html`, `styles.css`, `app.js`, and `README.md` to the repository.
+3. Go to **Settings** > **Pages**.
+4. Under **Build and deployment**, choose **Deploy from a branch**.
+5. Select the `main` branch and `/root` folder.
+6. Save the settings and wait for GitHub Pages to publish the site.
 
-3. **Error Handling**
-   - If the movie is not found or the API returns an error, display a clear message to the user.
-   - Unhandled errors will result in point deductions.
+## Project Structure
 
-4. **Multiple Searches**
-   - Users should be able to perform multiple searches without refreshing the page.
-   - If the page is refreshed, the last search view should be retained (e.g., using LocalStorage or URL parameters).
+```text
+omdb-project/
+├── index.html
+├── styles.css
+├── app.js
+└── README.md
+```
 
-5. **Backend Proxy (Optional)**
-   - If you implement a backend, it should handle API requests and return clean JSON to the frontend.
+## Notes
 
----
+The app uses the official OMDb API endpoint:
 
-## Non-Functional Requirements
+```text
+https://www.omdbapi.com/
+```
 
-1. **Performance**
-   - API calls should be efficient. Avoid unnecessary repeated requests.
-
-2. **Usability**
-   - The interface should be simple, intuitive, and user-friendly.
-   - The design is up to you.
-
-3. **Portability**
-   - The application should work across modern browsers and be responsive for different screen sizes.
-
-4. **Maintainability**
-   - Code should be modular, well-documented, and easy to extend.
-
----
-
-## Deliverables & Submission
-
-Once you have completed the project, ensure you have the following ready:
-- A **public GitHub repository** containing your project code (created via the template).
-- A **hosted version** of the project deployed on GitHub Pages.
+Search requests use the `s`, `type`, and `y` parameters. Movie detail requests use the `i` parameter with the IMDb ID returned by search results.

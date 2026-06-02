@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A responsive OMDb movie search single page application."
+    />
+    <title>OMDb Movie Finder</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero__content">
+          <p class="eyebrow">OMDb Movie Search</p>
+          <h1 id="page-title">Find the right film without leaving the page.</h1>
+          <p class="hero__copy">
+            Search movies, series, and episodes from OMDb, compare results, and
+            keep your latest discovery available after refresh.
+          </p>
+        </div>
+        <div class="hero__stats" aria-label="Application highlights">
+          <span><strong>SPA</strong> no reloads</span>
+          <span><strong>Saved</strong> last search</span>
+          <span><strong>Responsive</strong> layout</span>
+        </div>
+      </section>
+
+      <section class="search-panel" aria-label="Movie search controls">
+        <form id="search-form" class="search-form">
+          <div class="field field--wide">
+            <label for="search-input">Movie title</label>
+            <input
+              id="search-input"
+              name="query"
+              type="search"
+              placeholder="Try Inception, Matrix, Interstellar..."
+              autocomplete="off"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="type-filter">Type</label>
+            <select id="type-filter" name="type">
+              <option value="">All</option>
+              <option value="movie">Movie</option>
+              <option value="series">Series</option>
+              <option value="episode">Episode</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="year-filter">Year</label>
+            <input
+              id="year-filter"
+              name="year"
+              type="number"
+              min="1888"
+              max="2035"
+              placeholder="Any"
+            />
+          </div>
+
+          <button class="button button--primary" type="submit">
+            <i data-lucide="search" aria-hidden="true"></i>
+            <span>Search</span>
+          </button>
+        </form>
+
+        <details id="settings-panel" class="settings-panel">
+          <summary>
+            <i data-lucide="key-round" aria-hidden="true"></i>
+            API key settings
+          </summary>
+          <div class="settings-grid">
+            <div class="field field--wide">
+              <label for="api-key-input">OMDb API key</label>
+              <input
+                id="api-key-input"
+                type="password"
+                placeholder="Paste your OMDb API key"
+                autocomplete="off"
+              />
+            </div>
+            <button id="save-api-key" class="button" type="button">
+              <i data-lucide="save" aria-hidden="true"></i>
+              <span>Save key</span>
+            </button>
+            <button id="clear-api-key" class="button button--ghost" type="button">
+              <i data-lucide="trash-2" aria-hidden="true"></i>
+              <span>Clear</span>
+            </button>
+          </div>
+          <p class="hint">
+            The key is stored only in this browser. Get a free key from
+            <a href="https://www.omdbapi.com/apikey.aspx" target="_blank" rel="noreferrer">
+              omdbapi.com
+            </a>.
+          </p>
+        </details>
+      </section>
+
+      <section id="status-region" class="status" aria-live="polite"></section>
+
+      <section class="content-grid" aria-label="Search results and movie details">
+        <aside class="results-panel" aria-labelledby="results-title">
+          <div class="panel-heading">
+            <h2 id="results-title">Results</h2>
+            <span id="result-count">0 found</span>
+          </div>
+          <div id="results-list" class="results-list">
+            <p class="empty-state">Search for a title to see matching movies.</p>
+          </div>
+        </aside>
+
+        <section id="movie-detail" class="detail-panel" aria-labelledby="detail-title">
+          <div class="detail-empty">
+            <i data-lucide="film" aria-hidden="true"></i>
+            <h2 id="detail-title">Movie details will appear here.</h2>
+            <p>Select a result to view title, year, genre, director, poster, and more.</p>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
